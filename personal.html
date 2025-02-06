@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farid Mezane</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #6366f1;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        header {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: block;
+            border: 4px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            background: var(--card);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            max-width: 800px;
+            margin: 0 auto;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .about-text {
+            text-align: justify;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 65ch;
+            margin: 0 auto;
+            letter-spacing: 0.01em;
+            word-spacing: 0.05em;
+            hyphens: auto;
+        }
+
+        section:hover {
+            transform: translateY(-2px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--text);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .item {
+            background: var(--bg);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .item:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .project {
+            background: var(--bg);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .project:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .tech {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech span {
+            background: rgba(37, 99, 235, 0.1);
+            padding: 0.2rem 0.8rem;
+            border-radius: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card);
+            margin-top: 4rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            header {
+                padding: 4rem 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="portimg.jpg" alt="Farid Mezane" class="profile-img">
+        <h1>Farid Mezane</h1>
+        <p>Computer Science Teacher & Software Developer</p>
+    </header>
+
+    <nav class="glass">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about" class="fade-in">
+            <h2>About Me</h2>
+            <p class="about-text">As a Computer Science teacher and software developer with over 5 years of experience, I bridge the gap between theory and practical application. My diverse background spans education, software development, and technical support, allowing me to transform complex concepts into accessible knowledge. I specialize in creating educational software solutions and have developed multiple applications that enhance learning experiences. Beyond teaching, I'm passionate about building secure, efficient applications across various platforms. My multilingual abilities in Arabic, French, and English enable me to collaborate with diverse teams and reach a global audience.</p>
+        </section>
+
+        <section id="skills" class="fade-in">
+            <h2>Skills</h2>
+            <h3>Programming Languages</h3>
+            <div class="grid">
+                <div class="item">Java</div>
+                <div class="item">C++</div>
+                <div class="item">Python</div>
+                <div class="item">C</div>
+                <div class="item">C#</div>
+                <div class="item">Lua</div>
+                <div class="item">HTML</div>
+                <div class="item">CSS</div>
+                <div class="item">JavaScript</div>
+                <div class="item">PHP</div>
+				<div class="item">SQL</div>
+            </div>
+            
+            <h3>Languages</h3>
+            <div class="grid">
+                <div class="item">Arabic</div>
+                <div class="item">French</div>
+                <div class="item">English</div>
+            </div>
+        </section>
+
+        <section id="projects" class="fade-in">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>E-Learning Platform</h3>
+                <div class="tech">
+                    <span>PHP</span>
+                    <span>JavaScript</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                </div>
+                <p>Comprehensive e-learning platform with interactive features and content management.</p>
+            </div>
+            
+            <div class="project">
+                <h3>OS Learning Application</h3>
+                <div class="tech">
+                    <span>Java SE</span>
+                </div>
+                <p>Desktop application for learning operating system concepts through interactive exercises.</p>
+            </div>
+            
+            <div class="project">
+                <h3>Audio Player</h3>
+                <div class="tech">
+                    <span>Lua</span>
+                </div>
+                <p>Custom audio player with playback controls and playlist management.</p>
+            </div>
+            
+            <div class="project">
+                <h3>Browser Launcher</h3>
+                <div class="tech">
+                    <span>C#</span>
+                </div>
+                <p>Custom browser with subscription management and automated services.</p>
+            </div>
+            
+            <div class="project">
+                <h3>Camera Recorder</h3>
+                <div class="tech">
+                    <span>Python</span>
+                </div>
+                <p>Desktop application for recording and managing camera feeds.</p>
+            </div>
+        </section>
+
+        <section id="experience" class="fade-in">
+            <h2>Experience</h2>
+            <div class="project">
+                <h3>Computer Science Teacher</h3>
+                <p>High School | 2019 - Present</p>
+            </div>
+            
+            <div class="project">
+                <h3>Computer Store Sales Representative</h3>
+                <p>2 Years</p>
+            </div>
+            
+            <div class="project">
+                <h3>Computer & Phone Repair Technician</h3>
+                <p>6 Months</p>
+            </div>
+            
+            <div class="project">
+                <h3>Military Service</h3>
+                <p>1 Year</p>
+            </div>
+        </section>
+
+        <section id="contact" class="fade-in">
+            <h2>Contact</h2>
+            <p>Email: faridmezane@gmail.com</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Farid Mezane</p>
+    </footer>
+</body>
+</html>
