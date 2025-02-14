@@ -4,127 +4,210 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Titan Reader - Free Audio Reading Software</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #475569;
+            --accent: #3b82f6;
+            --background: #f8fafc;
+            --white: #ffffff;
+            --text: #1e293b;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            box-sizing: border-box;
         }
-        
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+        }
+
         header {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 6rem 2rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
-        
-        section {
-            background-color: white;
-            border-radius: 8px;
+
+        .card {
+            background: var(--white);
+            border-radius: 1rem;
             padding: 2rem;
             margin: 2rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
         }
-        
+
         .timeline {
             position: relative;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 3rem auto;
         }
-        
+
         .timeline-item {
-            padding: 1rem;
-            margin: 1rem 0;
-            border-left: 3px solid #3498db;
-            background-color: #f8f9fa;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent);
+            background: var(--white);
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        
-        .download-section {
-            display: flex;
-            justify-content: center;
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
-            flex-wrap: wrap;
         }
-        
+
         .download-card {
-            background-color: white;
-            border-radius: 8px;
+            background: var(--white);
+            border-radius: 1rem;
             padding: 2rem;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            flex: 1;
-            min-width: 280px;
-            max-width: 300px;
+            transition: transform 0.2s ease;
         }
-        
+
+        .download-card:hover {
+            transform: translateY(-4px);
+        }
+
         .download-button {
             display: inline-block;
-            background-color: #3498db;
-            color: white;
+            background: var(--primary);
+            color: var(--white);
             padding: 1rem 2rem;
-            border-radius: 4px;
+            border-radius: 0.5rem;
             text-decoration: none;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin-top: 1.5rem;
         }
-        
+
         .download-button:hover {
-            background-color: #2980b9;
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
-        
-        .version-info {
-            background-color: #f8f9fa;
-            padding: 1rem;
-            border-radius: 4px;
-            margin: 1rem 0;
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
-        
+
+        .feature-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
         .credits {
             text-align: center;
-            padding: 2rem;
-            background-color: #f8f9fa;
-            margin-top: 2rem;
+            padding: 4rem 2rem;
+            background: var(--white);
+            margin-top: 4rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Titan Reader 7.0</h1>
-        <p>A Free, Lightweight Audio Reading Solution</p>
+        <div class="header-content animate__animated animate__fadeIn">
+            <h1>Titan Reader 7.0</h1>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">A Free, Lightweight Audio Reading Solution</p>
+        </div>
     </header>
     
     <div class="container">
-        <section>
+        <section class="card animate__animated animate__fadeIn animate__delay-1s">
             <h2>About Titan Reader</h2>
             <p>Welcome to Titan Reader 7.0 - a lightweight, user-friendly audio reader born from passion and community collaboration. Our philosophy is simple: provide a free, efficient tool that anyone can use and improve.</p>
-            
-
         </section>
 
-        <section>
+        <section class="card">
             <h2>Key Features</h2>
-            <ul>
-                <li>Lightweight design with minimal CPU and memory usage</li>
-                <li>Simple, intuitive interface</li>
-                <li>Perfect for multitasking - won't slow down your gaming or other activities</li>
-                <li>Free and open source</li>
-                <li>Customizable to your needs</li>
-            </ul>
-            
-            <p><strong>Note:</strong> Arabic language support is currently in development.</p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>Lightweight</h3>
+                    <p>Minimal CPU and memory usage for optimal performance</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Intuitive</h3>
+                    <p>Simple, user-friendly interface for all skill levels</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Multitasking</h3>
+                    <p>Perfect companion for gaming and other activities</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Open Source</h3>
+                    <p>Free and customizable to your specific needs</p>
+                </div>
+            </div>
+           
         </section>
 
-        <section>
+        <section class="card">
             <h2>Development Timeline</h2>
             <div class="timeline">
                 <div class="timeline-item">
@@ -146,33 +229,32 @@
             </div>
         </section>
 
-        <section>
+        <section class="card">
             <h2>Download Latest Versions</h2>
-            <div class="download-section">
-<div class="download-card">
-    <h3>Titan Reader 7.0</h3>
-    <p>Latest version with complete redesign</p>
-    <img src="images/v7.jpg" alt="Titan Reader 7.0 Screenshot" style="width:100%; border-radius:8px;">
-    <ul>
-        <li>New modern interface</li>
-        <li>Improved performance</li>
-        <li>Enhanced user experience</li>
-    </ul>
-    <a href="Titan7.exe" class="download-button">Download Version 7</a>
-</div>
+            <div class="download-grid">
+                <div class="download-card">
+                    <h3>Titan Reader 7.0</h3>
+                    <p>Latest version with complete redesign</p>
+                    <img src="images/v7.jpg" alt="Titan Reader 7.0 Screenshot">
+                    <ul>
+                        <li>New modern interface</li>
+                        <li>Improved performance</li>
+                        <li>Enhanced user experience</li>
+                    </ul>
+                    <a href="Titan7.exe" class="download-button">Download Version 7</a>
+                </div>
 
-<div class="download-card">
-    <h3>Titan Reader 6.0</h3>
-    <p>Stable legacy version (4.0TS)</p>
-    <img src="images/v6.jpg" alt="Titan Reader 6.0 Screenshot" style="width:100%; border-radius:8px;">
-    <ul>
-        <li>Classic interface</li>
-        <li>Proven reliability</li>
-        <li>Broad compatibility</li>
-    </ul>
-    <a href="Setup.exe" class="download-button">Download Version 6</a>
-</div>
-
+                <div class="download-card">
+                    <h3>Titan Reader 6.0</h3>
+                    <p>Stable legacy version (4.0TS)</p>
+                    <img src="images/v6.jpg" alt="Titan Reader 6.0 Screenshot">
+                    <ul>
+                        <li>Classic interface</li>
+                        <li>Proven reliability</li>
+                        <li>Broad compatibility</li>
+                    </ul>
+                    <a href="Setup.exe" class="download-button">Download Version 6</a>
+                </div>
             </div>
         </section>
 
@@ -180,7 +262,7 @@
             <h2>Credits</h2>
             <p><strong>Programming & Design:</strong><br>
             Farid Mezane (<a href="mailto:faridmezane@gmail.com">faridmezane@gmail.com</a>)</p>
-			<h3>Titan Reader 7.0</h3>
+            <h3>Titan Reader 7.0</h3>
             <p><strong>Logo & Color Design:</strong><br>
             Mohcen Abd Wahed</p>
             <p>Feel free to contact me for any reason - suggestions, source code requests, bug reports, or just to say hello!</p>
