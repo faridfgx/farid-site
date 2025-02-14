@@ -169,62 +169,61 @@
     </div>
 </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                <div class="project">
-                    <img src="images/elearning.png" alt="E-Learning Platform" class="project-img" loading="lazy">
-                    <div class="project-content">
-                        <h3>E-Learning Platform</h3>
-                        <div class="tech">
-                            <span>PHP</span>
-                            <span>JavaScript</span>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                        </div>
-                        <p>Comprehensive e-learning platform with interactive features and content management.</p>
-                    </div>
-                    <div class="project-overlay">
-                        <h3>E-Learning Platform</h3>
-                        <p>A full-featured learning management system with real-time interaction</p>
-                        <button class="submit-btn">View Details</button>
-                    </div>
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+        <div class="project" data-project="elearning">
+            <img src="images/elearning.png" alt="E-Learning Platform" class="project-img" loading="lazy">
+            <div class="project-content">
+                <h3>E-Learning Platform</h3>
+                <div class="tech">
+                    <span>PHP</span>
+                    <span>JavaScript</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
                 </div>
-
-                <div class="project">
-                    <img src="images/java.jpg" alt="OS Learning Application" class="project-img" loading="lazy">
-                    <div class="project-content">
-                        <h3>OS Learning Application</h3>
-                        <div class="tech">
-                            <span>Java SE</span>
-                        </div>
-                        <p>Desktop application for learning operating system concepts through interactive exercises.</p>
-                    </div>
-                    <div class="project-overlay">
-                        <h3>OS Learning Application</h3>
-                        <p>Interactive simulations of operating system concepts</p>
-                        <button class="submit-btn">View Details</button>
-                    </div>
-                </div>
-
-                <div class="project">
-                    <img src="images/audioreader.jpg" alt="Audio Player" class="project-img" loading="lazy">
-                    <div class="project-content">
-                        <h3>Audio Player</h3>
-                        <div class="tech">
-                            <span>Lua</span>
-                        </div>
-                        <p>Custom audio player with playback controls and playlist management.</p>
-                    </div>
-                    <div class="project-overlay">
-                        <h3>Audio Player</h3>
-                        <p>Advanced audio processing with custom playlist features</p>
-                        <button class="submit-btn">View Details</button>
-                    </div>
-                </div>
+                <p>Comprehensive e-learning platform with interactive features and content management.</p>
             </div>
-        </section>
+            <div class="project-overlay">
+                <h3>E-Learning Platform</h3>
+                <p>A full-featured learning management system with real-time interaction</p>
+                <button class="submit-btn" onclick="openProjectModal('elearning')">View Details</button>
+            </div>
+        </div>
+        <div class="project" data-project="oslearning">
+            <img src="images/java.jpg" alt="OS Learning Application" class="project-img" loading="lazy">
+            <div class="project-content">
+                <h3>OS Learning Application</h3>
+                <div class="tech">
+                    <span>Java SE</span>
+                </div>
+                <p>Desktop application for learning operating system concepts through interactive exercises.</p>
+            </div>
+            <div class="project-overlay">
+                <h3>OS Learning Application</h3>
+                <p>Interactive simulations of operating system concepts</p>
+                <button class="submit-btn" onclick="openProjectModal('oslearning')">View Details</button>
+            </div>
+        </div>
+        <div class="project" data-project="audioplayer">
+            <img src="images/audioreader.jpg" alt="Audio Player" class="project-img" loading="lazy">
+            <div class="project-content">
+                <h3>Audio Player</h3>
+                <div class="tech">
+                    <span>Lua</span>
+                </div>
+                <p>Custom audio player with playback controls and playlist management.</p>
+            </div>
+            <div class="project-overlay">
+                <h3>Audio Player</h3>
+                <p>Advanced audio processing with custom playlist features</p>
+                    <button class="submit-btn" onclick="window.open('reader.html', '_blank')">View Details</button>
+            </div>
+        </div>
+    </div>
 
+ 
+</section>
 <!-- Remove the reCAPTCHA script from head -->
 
 <!-- Updated contact form section -->
@@ -290,5 +289,6 @@
     </footer>
 
     <script src="script.js"></script>
+	
 </body>
 </html>
