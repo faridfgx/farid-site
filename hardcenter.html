@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Information Center</title>
+    <style>
+        /* Base styles remain the same */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+
+        /* Icon styles */
+        .icon {
+            width: 48px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+
+        .icon::before {
+            font-family: monospace;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .icon-download::before {
+            content: "⭳";
+            font-size: 20px;
+            color: white;
+        }
+
+        .icon-cpu::before {
+            content: "⚡";
+        }
+
+        .icon-gpu::before {
+            content: "📊";
+        }
+
+        .icon-storage::before {
+            content: "💾";
+        }
+
+        .icon-shop::before {
+            content: "🛒";
+        }
+
+        .icon-chart::before {
+            content: "📈";
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, #f0f5ff 0%, #e5edff 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Download button */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .download-btn .icon {
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            margin: 0;
+        }
+
+        /* Features section */
+        .features {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+        }
+
+        /* Marketplace section */
+        .marketplace {
+            background-color: #f8fafc;
+            padding: 80px 20px;
+        }
+
+        .marketplace-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .marketplace-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            padding: 0 20px;
+        }
+
+        .marketplace-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .marketplace-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Screenshot section */
+        .screenshot {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .screenshot-container {
+            background-color: #f1f5f9;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .app-preview {
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(45deg, #2563eb 0%, #1d4ed8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #e5e7eb;
+            padding: 48px 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .marketplace-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .app-preview {
+                height: 400px;
+            }
+        }
+		.screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    padding: 20px;
+    text-align: center;
+}
+
+.screenshot-grid img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.screenshot-grid img:hover {
+    transform: scale(1.05);
+}
+
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Hardware Information Center</h1>
+        <p>Monitor your system specs and sell your exact hardware.</p>
+        <a href="software/HardwareCenter.exe" class="download-btn" id="downloadBtn">
+            <span class="icon icon-download"></span>
+            Download Now
+        </a>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="icon icon-cpu"></span>
+                <h3>System Analysis</h3>
+                <p>Get detailed information about your CPU, RAM, and motherboard</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon icon-gpu"></span>
+                <h3>GPU Monitoring</h3>
+                <p>Track graphics card performance and memory usage</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon icon-storage"></span>
+                <h3>Storage Details</h3>
+                <p>View all storage devices and their specifications</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section 
+    <section class="marketplace">
+        <div class="marketplace-container">
+            <h2 class="section-title">Hardware Marketplace</h2>
+            <div class="marketplace-grid">
+                <div class="marketplace-card">
+                    <span class="icon icon-shop"></span>
+                    <div>
+                        <h3>Buy Hardware</h3>
+                        <p>Shop for verified hardware components from trusted sellers</p>
+                    </div>
+                </div>
+                <div class="marketplace-card">
+                    <span class="icon icon-chart"></span>
+                    <div>
+                        <h3>Price Tracking</h3>
+                        <p>Monitor hardware prices and get the best deals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+-->
+    
+<!-- Screenshot Section -->
+<section class="screenshot">
+    <h2 class="section-title">App Preview</h2>
+    <div class="screenshot-container">
+        <div class="screenshot-grid">
+            <img src="images/hcenter.jpg" alt="Screenshot 1">
+            <img src="images/hcenter2.jpg" alt="Screenshot 2">
+            <img src="images/hcenter3.jpg" alt="Screenshot 3">
+			<img src="images/hcenter4.jpg" alt="Screenshot 4">
+			<img src="images/hcenter5.jpg" alt="Screenshot 5">
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Hardware Information Center © 2025</p>
+        <div class="footer-links">
+            <a href="faridmezane.space">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Download button click handler
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Download starting... Thank you for downloading Hardware Information Center!');
+            // Here you would typically trigger the actual download
+            window.location.href = 'software/HardwareCenter.zip';
+
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll reveal animation
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.feature-card, .marketplace-card');
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                if (position.top < window.innerHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize cards with animation properties
+        document.querySelectorAll('.feature-card, .marketplace-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.5s ease-out';
+        });
+    </script>
+</body>
+</html>
