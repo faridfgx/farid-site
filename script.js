@@ -397,3 +397,125 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+// Mobile Menu Functionality
+const createMobileMenu = () => {
+    // Create menu toggle button
+    const menuToggle = document.createElement('button');
+    menuToggle.className = 'menu-toggle';
+    menuToggle.setAttribute('aria-label', 'Toggle navigation menu');
+    
+    // Add hamburger icon spans
+    for (let i = 0; i < 3; i++) {
+        const span = document.createElement('span');
+        menuToggle.appendChild(span);
+    }
+    
+    // Add to document
+    document.body.appendChild(menuToggle);
+    
+    // Get nav element
+    const nav = document.querySelector('nav');
+    
+    // Toggle menu
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        nav.classList.toggle('active');
+        
+        // Handle accessibility
+        const isExpanded = nav.classList.contains('active');
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isExpanded ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking links
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+};
+
+// Enhanced Animation System
+const initializeAnimations = () => {
+    // Intersection Observer for sections
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                
+                // Animate grid items within the section
+                entry.target.querySelectorAll('.grid .item').forEach(item => {
+                    item.classList.add('animate');
+                });
+                
+                // Animate projects within the section
+                entry.target.querySelectorAll('.project').forEach(project => {
+                    project.classList.add('animate');
+                });
+                
+                // Stop observing after animation
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '50px'
+    });
+
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+        sectionObserver.observe(section);
+    });
+};
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize mobile menu
+    createMobileMenu();
+    
+    // Initialize animations
+    initializeAnimations();
+    
+    // Handle smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+
+// Update active navigation link based on scroll position
+const updateActiveNavLink = () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+    
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const id = section.getAttribute('id');
+        
+        if (rect.top <= 150 && rect.bottom >= 150) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+};
+
+// Listen for scroll events to update active nav link
+window.addEventListener('scroll', _.throttle(updateActiveNavLink, 100));

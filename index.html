@@ -12,6 +12,11 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
+<button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
     <button class="theme-toggle" aria-label="Toggle theme">
         🌓
     </button>
@@ -32,15 +37,15 @@
         <p class="text-xl">Computer Science Teacher & Software Developer</p>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about" class="active">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<nav aria-label="Main navigation">
+    <ul>
+        <li><a href="#about" class="active">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+		<li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
     <div class="container">
         <section id="about">
@@ -415,7 +420,7 @@
         <p>&copy; 2025 Farid Mezane. All rights reserved.</p>
     </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
     <script src="script.js"></script>
-	
 </body>
 </html>
