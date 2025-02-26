@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureVault - Secure Password Manager</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --dark: #2c3e50;
+            --darker: #1e2b38;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f8fa;
+        }
+        
+        header {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .developer {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--light);
+        }
+        
+        .developer a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .developer a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-large {
+            font-size: 1.2rem;
+            padding: 1.2rem 2.5rem;
+        }
+        
+        .features {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            font-size: 2rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-item {
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .feature-title {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .screenshots {
+            padding: 4rem 0;
+            background-color: #f5f8fa;
+        }
+        
+        .screenshot-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .cta {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: var(--darker);
+            color: var(--light);
+        }
+        
+        .download-section {
+            margin-top: 2rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .system-req {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">SecureVault</div>
+            <h1 class="tagline">Your Digital Fortress for Passwords</h1>
+            <p class="developer">Developed by <a href="https://faridmezane.space" target="_blank">Farid Mezane</a></p>
+            <a href="https://www.mediafire.com/file/54nfj3kfaa8gvuu/SecureVault.zip/file" class="btn btn-large">Download Now</a>
+        </div>
+    </header>
+    
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Advanced Security Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3 class="feature-title">Strong Encryption</h3>
+                    <p>Military-grade encryption using PBKDF2 and Fernet cipher ensures your passwords remain secure against brute force attacks.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="feature-title">Password Generator</h3>
+                    <p>Create strong, unique passwords with our customizable generator. Control length and character types for maximum security.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="feature-title">Secure Master Password</h3>
+                    <p>Access all your passwords with a single master password that never leaves your device.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="feature-title">Auto-Clear Clipboard</h3>
+                    <p>Copied passwords are automatically cleared from your clipboard after 20 seconds for enhanced security.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="feature-title">Modern Interface</h3>
+                    <p>Clean, intuitive dark-themed interface makes password management simple and efficient.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="feature-title">Locally Stored Data</h3>
+                    <p>Your password vault stays on your device with no cloud sync, ensuring maximum privacy and control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="screenshots">
+        <div class="container">
+            <h2 class="section-title">SecureVault in Action</h2>
+            <div class="screenshot-container">
+                <img src="images/svc1.jpg" alt="SecureVault Login Screen" class="screenshot">
+                <img src="images/svc2.jpg" alt="Password Management Interface" class="screenshot">
+				<img src="images/svc3.jpg" alt="Saving new Password Options" class="screenshot">
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta" id="download">
+        <div class="container">
+            <h2 class="section-title">Protect Your Digital Life Today</h2>
+            <p>Take control of your passwords with SecureVault. Easy to use, impossible to crack.</p>
+            
+            <div class="download-section">
+                <a href="https://www.mediafire.com/file/54nfj3kfaa8gvuu/SecureVault.zip/file" class="btn btn-large">Download SecureVault v1.0</a>
+                <p class="system-req">
+                    System Requirements: Windows 10/11
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 SecureVault Password Manager. All rights reserved.</p>
+            <p>SecureVault is an open-source password manager created by <a href="https://faridmezane.space" target="_blank" style="color: var(--primary);">Farid Mezane</a> for maximum security and ease of use.</p>
+        </div>
+    </section>
+</body>
+</html>
