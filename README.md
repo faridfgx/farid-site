@@ -26,7 +26,7 @@ I am a software developer with expertise in network and distributed systems, sec
 ## 🔧 Setup & Deployment
 1. Clone this repository:
    ```sh
-   git clone https://github.com/yourusername/portfolio.git
+   git clone https://github.com/faridfgx/farid-site
    ```
 2. Navigate to the project directory:
    ```sh
