@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Organizer - Your Ultimate Programming Project Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4285F4;
+            --primary-dark: #3367D6;
+            --secondary: #ff9800;
+            --secondary-dark: #F57C00;
+            --bg-dark: #1e1e1e;
+            --bg-card: #2d2d2d;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent: #00C853;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        section {
+            margin: 3rem 0;
+        }
+
+        h2 {
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .feature-card ul {
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+            color: var(--text-muted);
+        }
+
+        .feature-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-section {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            text-align: center;
+        }
+
+        .cta-section h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .button-secondary {
+            background-color: var(--secondary);
+        }
+
+        .button-secondary:hover {
+            background-color: var(--secondary-dark);
+        }
+
+        .screenshot {
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #3d3d3d;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Project Organizer</h1>
+            <p class="tagline">Your ultimate tool for managing programming projects efficiently</p>
+            <div class="header-buttons">
+                <a href="https://github.com/faridfgx/ProjectOrganizer" target="_blank" class="button">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="https://www.mediafire.com/file/kh0t2rb4ods9nnw/project_organizer.zip/file" class="button button-secondary">
+                    <i class="fas fa-download"></i> Download Now
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Supercharge Your Project Management</h2>
+            <p>Project Organizer is a comprehensive tool designed specifically for programmers and developers who need to keep track of multiple projects, deadlines, and priorities.</p>
+            <img src="dashboard.jpg" alt="Project Organizer Dashboard" class="screenshot">
+        </section>
+        
+        <section>
+            <h2>Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Project Management</h3>
+                    <p>Create, edit, and delete projects with ease.</p>
+                    <ul>
+                        <li>Track project name, language, priority</li>
+                        <li>Set deadlines and completion percentage</li>
+                        <li>Add detailed descriptions and notes</li>
+                        <li>Manage project dependencies</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3>Filtering & Sorting</h3>
+                    <p>Find exactly what you need, when you need it.</p>
+                    <ul>
+                        <li>Filter by priority (High, Medium, Low)</li>
+                        <li>Filter by programming language</li>
+                        <li>Search by name or description</li>
+                        <li>Sort by date, priority, deadline, or completion</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Dashboard & Statistics</h3>
+                    <p>Visualize your project portfolio at a glance.</p>
+                    <ul>
+                        <li>Project statistics and metrics</li>
+                        <li>Summary cards for quick insights</li>
+                        <li>Distribution charts by priority</li>
+                        <li>Progress tracking and timelines</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Dark Theme Support</h3>
+                    <p>Easy on the eyes, perfect for night coding sessions.</p>
+                    <ul>
+                        <li>Comprehensive dark mode styling</li>
+                        <li>Modern, sleek interface</li>
+                        <li>Reduced eye strain</li>
+                        <li>Consistent styling across all components</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Deadline Notifications</h3>
+                    <p>Never miss an important deadline again.</p>
+                    <ul>
+                        <li>System tray notifications</li>
+                        <li>Upcoming deadline alerts</li>
+                        <li>Daily summary notifications</li>
+                        <li>Customizable notification settings</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-download-alt"></i>
+                    </div>
+                    <h3>Backup & Restore</h3>
+                    <p>Keep your project data safe and portable.</p>
+                    <ul>
+                        <li>Manual and automatic backups</li>
+                        <li>Restore from backup files</li>
+                        <li>Export to external locations</li>
+                        <li>Data loss prevention</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                    <h3>Export Functionality</h3>
+                    <p>Share your project data in various formats.</p>
+                    <ul>
+                        <li>Export to JSON format</li>
+                        <li>CSV export for spreadsheet analysis</li>
+                        <li>Plain text reports</li>
+                        <li>Customizable export options</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>UI Enhancements</h3>
+                    <p>A powerful yet intuitive user experience.</p>
+                    <ul>
+                        <li>Responsive design with resizable panels</li>
+                        <li>Customizable UI elements</li>
+                        <li>Helpful tooltips and icons</li>
+                        <li>Modern, consistent styling</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section" id="download">
+            <h2>Ready to Get Organized?</h2>
+            <p>Take control of your programming projects today with Project Organizer.</p>
+            <div style="margin-top: 2rem;">
+                <a href="https://faridmezane.space" target="_blank" class="button">
+                    <i class="fas fa-globe"></i> Visit Developer Site
+                </a>
+                <a href="https://www.mediafire.com/file/kh0t2rb4ods9nnw/project_organizer.zip/file" class="button button-secondary" style="margin-left: 1rem;">
+                    <i class="fas fa-download"></i> Download App
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Project Organizer. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>Created by <a href="https://faridmezane.space" style="color: var(--secondary); text-decoration: none;">Farid Mezane</a></p>
+        </div>
+    </footer>
+</body>
+</html>
